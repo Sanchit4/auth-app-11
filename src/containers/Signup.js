@@ -51,17 +51,24 @@ class Signup extends Component {
     return isValid;
   };
 
-  notify = () => toast("Your Account has been Created!!");
+  notify = () => toast("Your Account has been Created redirecting to login!!");
+
+  redirectToLogin = () => {
+    setTimeout(() => {
+      this.props.history.push("/login");
+    }, 5000);
+  };
 
   onSubmit = e => {
     e.preventDefault();
     const { user } = this.state;
-    //const { addres } = this.state;
+
     if (this.isValid(user)) {
       actions
         .onSignupPress(user)
         .then(res => {
           this.notify();
+          this.redirectToLogin();
         })
         .catch(error => {});
     } else {
