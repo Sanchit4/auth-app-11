@@ -61,12 +61,9 @@ class Signup extends Component {
       actions
         .onSignupPress(user)
         .then(res => {
-          console.log(res, "res");
           this.notify();
         })
-        .catch(error => {
-          console.log(error, "the signup error response");
-        });
+        .catch(error => {});
     } else {
       this.setState({ isValidated: true });
     }
@@ -79,7 +76,6 @@ class Signup extends Component {
   render() {
     const { user, isValidated, errors, address } = this.state;
 
-    console.log(user, errors, "user");
     return (
       <SignupForm
         user={user}

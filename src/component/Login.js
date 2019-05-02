@@ -27,7 +27,6 @@ class Login extends Component {
   };
 
   _onChange = ({ target }) => {
-    console.log(target.name);
     const { name, value } = target;
     this.setState({ [name]: value });
   };
@@ -36,14 +35,11 @@ class Login extends Component {
   login = e => {
     e.preventDefault();
     const { email, password } = this.state;
-    console.log(email, password, "the email and password vallue");
     this.setState({ loading: true });
 
     actions
       .onLoginPress({ email, password })
       .then(res => {
-        console.log(res.xyz, "the reus");
-        console.log(res, "teh result is sucess");
         this.setState({ loading: false });
         saveObject("user", res.data);
         this.props.history.push("/");
@@ -51,16 +47,13 @@ class Login extends Component {
       })
       .catch(error => {
         this.setState({ loading: false });
-        console.log(error, "the; error response");
       });
     /* .finally(() => {
         this.setState({ loading: false });
       });*/
-    console.log(email, password);
   };
 
   render() {
-    console.log(this.props, "props");
     const { loading } = this.state;
 
     if (loading) {
