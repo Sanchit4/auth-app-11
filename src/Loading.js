@@ -2,7 +2,7 @@ import React, { Component } from "react";
 class Loader extends Component {
   render() {
     return (
-      <div class="lds-ring">
+      <div class="lds-ellipsis">
         <div />
         <div />
         <div />

@@ -55,22 +55,6 @@ class Login extends Component {
 
   render() {
     const { loading } = this.state;
-
-    if (loading) {
-      return (
-        <div
-          style={{
-            height: "100vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-        >
-          <Loader />
-        </div>
-      );
-    }
-
     return (
       <Container>
         <Col
@@ -96,7 +80,7 @@ class Login extends Component {
             <p style={{ fontSize: "10px" }}>Enter your Login details below</p>
           </Col>
           <Col>
-            <Form>
+            <Form onSubmit={this.login}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label style={{ fontSize: "10px" }}>
                   EMAIL ADDRESS
@@ -121,16 +105,16 @@ class Login extends Component {
                   />
                 </InputGroup>
               </Form.Group>
-              <a
-                href="https://www.google.com"
+              <p
                 style={{
                   color: "black",
                   fontSize: "9px",
-                  paddingLeft: "215px"
+                  paddingLeft: "215px",
+                  cursor: "pointer"
                 }}
               >
-                Forgot Password?
-              </a>
+                <a>Forgot Password? </a>
+              </p>
               <Form.Group
                 style={{ marginTop: "-22px" }}
                 controlId="formBasicPassword"
@@ -167,19 +151,25 @@ class Login extends Component {
                   label="Remember Me!"
                 />
               </Form.Group>
-              <Button
-                style={{
-                  marginTop: "15px",
-                  backgroundColor: "#3a4350",
-                  width: "25%",
-                  fontSize: "12px",
-                  border: "none"
-                }}
-                variant="primary"
-                onClick={this.login}
-              >
-                SIGN IN
-              </Button>
+              {loading ? (
+                <div>
+                  <Loader />
+                </div>
+              ) : (
+                <Button
+                  style={{
+                    marginTop: "15px",
+                    backgroundColor: "#3a4350",
+                    width: "25%",
+                    fontSize: "12px",
+                    border: "none"
+                  }}
+                  type="submit"
+                  variant="primary"
+                >
+                  SIGN IN
+                </Button>
+              )}
             </Form>
           </Col>
         </Col>
