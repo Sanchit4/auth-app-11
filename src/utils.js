@@ -1,28 +1,57 @@
 import axios from "axios";
 import { API_URL } from "./constants";
 
-export function apiGet(endpoint, header) {
+export function apiGet(endpoint) {
   const finalEndpoint = finalUrl(endpoint);
-
-  return axios.get(finalEndpoint, { headers: header });
+  return apiRequest(finalEndpoint, "get");
 }
 
 export function apiPost(endpoint, data) {
   const finalEndpoint = finalUrl(endpoint);
+  return apiRequest(finalEndpoint, "post", data);
+}
 
-  return axios.post(finalEndpoint, data);
+export function apiPatch(endpoint, data) {
+  const finalEndpoint = finalUrl(endpoint);
+  return apiRequest(finalEndpoint, "patch", data);
 }
 
 export function apiPut(endpoint, data) {
   const finalEndpoint = finalUrl(endpoint);
-  return axios.put(finalEndpoint, data);
+  return apiRequest(finalEndpoint, "put", data);
 }
 
-export function apiDelete(endpoint, data, header) {
-  const user = getObject("user");
-  const headers = { ...header, Authorization: user.token };
+export function apiDelete(endpoint) {
   const finalEndpoint = finalUrl(endpoint);
-  return axios.delete(finalEndpoint);
+  return apiRequest(finalEndpoint, "delete");
+}
+
+export function getHeader() {
+  const user = getObject('user');
+  if (user && user.token) {
+    return { Authorization: "Bearer " + user.token }
+  }
+  return {}
+}
+
+export function apiRequest(link, method = 'get', data = {}, headers = {}) {
+  if (!link)
+    return;
+
+  headers = {
+    ...headers,
+    ...getHeader()
+  }
+
+  if (method == 'get' || method == 'delete') {
+    data = {
+      headers
+    }
+  }
+
+  return axios[method](link, data, headers).then(res => {
+    return res.data
+  })
 }
 
 const finalUrl = slug => {

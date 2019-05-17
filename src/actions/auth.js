@@ -25,7 +25,7 @@ export function onLoginPress(data) {
     loginApi(data)
       .then(res => {
         loginSuccess(res);
-        resolve({ ...res });
+        resolve(res);
       })
       .catch(err => {
         toast.error(err.response.data.message || "Something Went Wrong !!");

@@ -12,3 +12,40 @@ p.error {
         border: 1px solid red;
     }
 }
+
+
+.show-product{
+    background-color: white;
+    width: 250px;
+    height: 250px;
+    margin: 15px;
+    border-radius: 4px;
+    transition: 0.3s;
+    
+
+    
+  
+    img {
+      margin-left:25px ;
+      margin-top: 20px; 
+      width: 80%;
+      height: 60%;
+      border-radius: 4px;
+    }
+    h5 {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    p{
+        text-align:center;
+    }
+  }
+  
+  .addproducts-1{
+    background-color: white;
+    margin-top: 90px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 6px;
+  }
