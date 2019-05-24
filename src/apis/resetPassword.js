@@ -1,7 +1,7 @@
-import { apiPost, apiGet } from "../utils"
+import { apiPost } from "../utils"
 
 
-export function getPasswordAPI() {
+export function getPasswordAPI(data) {
 
-    return apiGet("/user/reset-password")
+    return apiPost("/user/reset-password", data)
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Col, Row, Form, Button, InputGroup, FormControl } from "react-bootstrap"
 import { forgotPasswordAPI } from "./apis/auth"
+import { toast } from 'react-toastify';
 
 
 class ForgotPassword extends Component {
@@ -26,10 +27,13 @@ class ForgotPassword extends Component {
 
         e.preventDefault()
         const { user } = this.state
-        console.log("Sended Request")
+        console.log(this.state, "Sended Request")
         forgotPasswordAPI(user)
             .then(() => {
-                this.props.history.push('/checkmail')
+                console.log(user, "In the API")
+                toast.success("Here We go")
+                this.props.history.push("/checkmail")
+
             })
             .catch(err => {
                 console.log(err, "eror from Forgotpassword")
@@ -55,6 +59,9 @@ class ForgotPassword extends Component {
                                     placeholder="Enter E-mail"
                                     aria-label="Username"
                                     aria-describedby="basic-addon1"
+                                    name="email"
+                                    value={email}
+                                    onChange={this._onChange}
                                 />
                             </InputGroup>
 
@@ -66,7 +73,7 @@ class ForgotPassword extends Component {
                                 size="lg"
                                 block
                                 onClick={this.forgotpassword}
-                            >Procced
+                            >GO
                 </Button>
                         </Form>
                         <Row>

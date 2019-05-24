@@ -21,7 +21,7 @@ p.error {
     margin: 15px;
     border-radius: 4px;
     transition: 0.3s;
-    
+    cursor: pointer;
 
     
   
@@ -49,3 +49,68 @@ p.error {
     padding-bottom: 50px;
     border-radius: 6px;
   }
+
+  .about-user{
+      margin:auto;
+      margin-top:90px;
+      padding-top:40px;
+      padding-bottom:40px;
+      border-radius:6px;
+      font-size:15px;
+      font-weight:600;
+      text-align:center;
+      background-color:white;
+      width:500px;
+      margin-left:250px;
+    
+  }
+
+.homepage{
+
+  text-align:"center";
+}
+  
+.div-account{
+  cursor:pointer;
+  float:right;
+}
+
+.about-user2{
+
+  margin-top:90px;
+  padding-top:40px;
+  padding-bottom:40px;
+  border-radius:6px;
+  font-size:15px;
+  font-weight:600;
+  padding-left: 40px;
+  background-color:white;
+  width:500px;
+  margin-left:250px;
+
+}
+.aboutuser {
+  margin:auto;
+  align-items: center;
+  margin-top: 90px;
+  background-color: white;
+  width: 500px;
+  border-radius: 6px;
+  padding: 20px;
+  text-align: left;
+  p {
+    font-size: 20px;
+    font-weight: bold;
+    span {
+      font-size: 20px;
+      font-weight: 100;
+    }
+    input {
+      font-size: 18px;
+      background: transparent;
+      border: none;
+      width: 65%;
+    }
+  }
+
+}

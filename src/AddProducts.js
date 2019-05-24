@@ -17,13 +17,8 @@ class AddProducts extends Component {
 
                 name: "",
                 price: "",
-                asset: {
-                    url: ""
-                }
-            },
-
-            loading: true
-
+                description: ""
+            }
         }
     }
 
@@ -39,20 +34,20 @@ class AddProducts extends Component {
     onProduct = (e) => {
 
         e.preventDefault()
-        const { product, asset } = this.state
+        const { product } = this.state
         this.setState({
             loading: true
         })
+        console.log(this.state.product, "Outside the API")
+        actions.addProduct(product).then(res => {
 
-        actions
-            .addProduct({ product, asset })
-            .then(res => {
-                this.setState({
-                    loading: false
-                })
-
-                toast.success("Product Added")
+            console.log(res, "In the API")
+            this.setState({
+                loading: false
             })
+
+            toast.success("Product Added")
+        })
 
             .catch(err => {
                 this.setState({
@@ -76,7 +71,8 @@ class AddProducts extends Component {
 
 
             <Container className="addproducts">
-                <Col className="addproducts-1" xs={12} sm={4} md={{ span: 4, offset: 3 }}>
+
+                <Col className="addproducts-1" xs={12} sm={4} md={{ span: 4, offset: 3 }}> <h3 style={{ textAlign: "center", marginBottom: 15 }}> Add Products</h3>
                     <Col>
                         <Form onSubmit={this.onProduct}>
                             <Form.Group controlId="formGroupEmail">
@@ -103,13 +99,20 @@ class AddProducts extends Component {
                                     style={{ marginBottom: 30 }}
                                 />
                             </Form.Group>
-                            <FormGroup>
-                                <Form.Control type="file" name="url"
-                                    value={product.asset.url}
+
+                            <Form.Group controlId="formGroupEmail">
+                                <Form.Control
+                                    className="controlinput"
+                                    size="lg"
+                                    type="text"
+                                    placeholder="Enter Product Discription"
+                                    name="description"
+                                    value={product.description}
                                     onChange={this._onChange("product")}
-                                    style={{ fontSize: 10, marginLeft: 165, marginTop: -25 }}
+                                    style={{ marginBottom: 30 }}
                                 />
-                            </FormGroup>
+                            </Form.Group>
+
                             <Button
                                 type="submit"
                                 className="btnsignin"

@@ -20,7 +20,7 @@ const items = [
     },
     {
         label: "About",
-        value: "/userdetails",
+        value: "/about",
         icon: <i className="fas fa-address-card"></i>
     },
     {

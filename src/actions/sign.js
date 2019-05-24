@@ -1,6 +1,8 @@
 import types from "../types";
 import store from "../store";
 import { signupApi } from "../apis/auth";
+import { getPasswordAPI } from "../apis/resetPassword"
+import { toast } from "react-toastify";
 
 const { dispatch } = store;
 
@@ -30,4 +32,20 @@ export function onSignupPress(data) {
         reject(error);
       });
   });
+}
+
+export function resetPassword(data) {
+  console.log(data, "Outside the API")
+  return new Promise((resolve, reject) => {
+    getPasswordAPI(data)
+      .then(res => {
+        console.log(res, "this is data")
+        resolve(res)
+      })
+      .catch(error => {
+        reject(error);
+        toast.error(error.response.data.message || 'Something went wrong!');
+      })
+  })
+
 }

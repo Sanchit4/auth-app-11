@@ -1,18 +1,16 @@
 import React, { Component } from "react";
-import { removeObject, getObject } from "../utils";
-import { Row, Col } from "react-bootstrap"
-import Navv from "../UIComponents/Navbar"
-import Side from "../UIComponents/Sidebar"
+import { getObject } from "../utils";
 
 export default class extends Component {
+
 
 
   render() {
 
     return (
-      <div >
+      <div style={{ marginTop: 60, textAlign: "center" }} >
 
-
+        <h1> Welcome, {getObject("user").name} </h1>
 
       </div>
     )

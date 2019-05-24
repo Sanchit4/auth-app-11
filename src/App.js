@@ -13,7 +13,12 @@ import MainComponent from "./MainComponent"
 import ShowProducts from "./Products/ShowProducts"
 import AddProducts from "./AddProducts"
 import ForgotPassword from "./ForgotPassword"
-//import CheckMail from "./"
+import About from "./about"
+import AccountSettings from "./AccountSettings"
+import CheckMail from "./CheckMail"
+import ResetPassword from "./ResetPassword"
+
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
@@ -48,7 +53,10 @@ class App extends React.Component {
           <PrivateRoute path="/showproducts" component={ShowProducts} />
           <PrivateRoute path="/addproducts" component={AddProducts} />
           <PublicRoute path="/forgotpassword" component={ForgotPassword} />
-
+          <PrivateRoute path="/about" component={About} />
+          <PrivateRoute path="/accountsettings" component={AccountSettings} />
+          <PublicRoute path="/checkmail" component={CheckMail} />
+          <PublicRoute path="/resetpassword/:token" component={ResetPassword} />
         </Switch>
       </Router>
     );
