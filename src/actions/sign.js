@@ -35,11 +35,10 @@ export function onSignupPress(data) {
 }
 
 export function resetPassword(data) {
-  console.log(data, "Outside the API")
+
   return new Promise((resolve, reject) => {
     getPasswordAPI(data)
       .then(res => {
-        console.log(res, "this is data")
         resolve(res)
       })
       .catch(error => {

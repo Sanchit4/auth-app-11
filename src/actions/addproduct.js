@@ -17,7 +17,7 @@ export const addProduct = (data) => {
     return new Promise((resolve, reject) => {
         console.log("working or not???")
         createProductAPI(data).then((res) => {
-            console.log("working or not2222???")
+            console.log(data, "working or not2222???")
             dispatch({
                 type: types.ADD_PRODUCT_SUCCESS,
                 payload: res

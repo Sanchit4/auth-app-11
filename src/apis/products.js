@@ -18,5 +18,6 @@ export function createProductAPI(data) {
 
     data1.append('name', data.name)
     data1.append('price', data.price)
+    data1.append('description', data.description)
     return apiPost("/products", data1);
 }

@@ -15,14 +15,10 @@ class Navv extends Component {
 
         return (
 
-            <Navbar style={{ position: "fixed", width: "102%",zIndex:"100" }} bg="dark" variant="dark">
-                <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#features">Features</Nav.Link>
-                    <Nav.Link href="#pricing">Pricing</Nav.Link>
-                </Nav>
-                <Button onClick={this.logout} varient="primary">LOGOUT</Button>
+            <Navbar style={{ position: "fixed", width: "102%", zIndex: "100" }} bg="dark" variant="dark">
+                <Navbar.Brand href="#home">Navigation</Navbar.Brand>
+
+                <Button style={{ marginLeft:1120 }} onClick={this.logout} varient="primary">LOGOUT</Button>
 
             </Navbar>
 

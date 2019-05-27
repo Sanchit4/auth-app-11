@@ -1,15 +1,15 @@
 import axios from "axios";
 import { API_URL } from "./constants";
 
+
 export function apiGet(endpoint) {
   const finalEndpoint = finalUrl(endpoint);
   return apiRequest(finalEndpoint, {}, "get", {});
 }
 
 export function apiPost(endpoint, data) {
-  console.log(endpoint, data, getHeader(), "header data endpojnt")
   const finalEndpoint = finalUrl(endpoint);
-  return apiRequest(finalEndpoint, data, "post", {});
+  return apiRequest(finalEndpoint, data, "post", {})
 }
 
 export function apiPatch(endpoint, data) {
@@ -27,18 +27,21 @@ export function apiDelete(endpoint) {
   return apiRequest(finalEndpoint, {}, "delete", {});
 }
 
-export function getHeader() {
-  const user = getObject('user');
+export function getHeaders() {
+  const user = getObject("user") || {};
   if (user && user.token) {
-    return { Authorization: "Bearer " + user.token }
-  }
-  return {}
-}
+    return {
+      Authorization: `Bearer ${user.token}`
+    };
 
+  }
+  return {};
+}
 export function apiRequest(endPoint, data, method, headers) {
   return new Promise((resolve, reject) => {
+
     headers = {
-      ...getHeader(),
+      ...getHeaders(),
       ...headers
     };
 
@@ -52,13 +55,14 @@ export function apiRequest(endPoint, data, method, headers) {
       }
     }
 
-    axios[method](endPoint, data, { headers }).then(response => {
-      const { data } = response;
+    axios[method](endPoint, data, { headers }).then(res => {
+      const { data } = res;
       if (data.status === false) {
         return reject(data);
       }
       return resolve(data);
     }).catch(error => {
+
       return reject(error);
     });
   });

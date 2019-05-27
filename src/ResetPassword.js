@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { Container, Col, Form, Button } from "react-bootstrap"
 
 
+
 toast.configure()
 
 class ResetPassword extends Component {
@@ -27,14 +28,10 @@ class ResetPassword extends Component {
     }
 
     valid() {
-
         const { password, confirmPassword } = this.state.pass
-
         if (password === confirmPassword) {
-
             return true;
         }
-
         return false
     }
 
@@ -43,10 +40,10 @@ class ResetPassword extends Component {
     }
 
     resetPassword = () => {
+        console.log("Reset password are", actions);
         actions.resetPassword({ token: this.props.match && this.props.match.params && this.props.match.params.token || "", password: this.state.pass.password || '' }).then(res => {
-
+            console.log("Res are", res);
             toast.success("Password Changed Redirecting to Login Page")
-
             setTimeout(() => {
                 this.props.history.push("/login")
             }, 5000)
@@ -56,21 +53,13 @@ class ResetPassword extends Component {
 
     resetPassBtn = (e) => {
         e.preventDefault()
-
-        const { pass } = this.state.pass
-
         if (this.valid()) {
-            this.resetPassword()
+            this.resetPassword();
+        }
+        else {
+            this.notify()
         }
     }
-
-
-
-    componentDidMount() {
-        console.log(this.props.match.params.token, 'param')
-    }
-
-
 
     render() {
 
@@ -105,7 +94,6 @@ class ResetPassword extends Component {
                             <Button
                                 type="submit"
                                 style={{ margin: "30px 0px 140px 0px", backgroundColor: "#212529", borderColor: "white" }}
-
                                 variant="primary"
                                 size="lg"
                                 block
@@ -125,4 +113,4 @@ class ResetPassword extends Component {
 }
 
 
-export default ResetPassword 
+export default ResetPassword

@@ -92,25 +92,39 @@ class ShowProducts extends Component {
                 </Row>
                 <div>
 
-                    {this.state.isloading ? <div className="lds-ellipsis">< Loader /></div> :
-                        <Modal show={this.state.modal} onHide={this.openModal}>
-                            <Modal.Header onHide={() => this.openModal} closeButton>
-                                <Modal.Title>Products Info</Modal.Title>
-                            </Modal.Header>
 
-                            <Modal.Body>
-                                <img src={product.asset && product.asset.url} alt="Image" />
-                                <p> Name: {product.name}</p>
-                                <p>Price: Rs.{product.price}</p>
-                                <p>Description: {product.description} </p>
+                    <Modal size="lg" show={this.state.modal} onHide={this.openModal}>
+                        <Modal.Header onHide={() => this.openModal} closeButton>
+                            <Modal.Title>Products Info</Modal.Title>
+                        </Modal.Header>
 
-                                <ButtonToolbar>
-                                    <Button variant="success" style={{ marginLeft: 335 }} onClick={this.openModal} >No</Button>
-                                    <  Button variant="danger" style={{ marginLeft: 12 }} onClick={this.openModal2}>Delete</Button>
-                                </ButtonToolbar>
+                        <Modal.Body>
+                            <Row>
+                                <Col className="modImg">
+                                    {product.asset && product.asset.url && product.asset.url.length ? <img src={product.asset && product.asset.url} alt="Image" /> : <div styles={{ backgroundColor: "#dfdfdf", borderRadius: "4px", width: 400, height: 400 }} > </div>
+                                    }
 
-                            </Modal.Body>
-                        </Modal>}
+                                </Col>
+                                <Col>
+                                    <h3> Name: {product.name}</h3>
+                                    <p>Price: Rs.{product.price}</p>
+                                    <p>Description: {product.description} </p>
+
+
+
+                                    <Row style={{ margin: 0 }}>
+
+                                        <ButtonToolbar style={{ marginTop: "55px"}}>
+                                            <Button variant="success" style={{ marginLeft: 235, bottom: 30 }} onClick={this.openModal} >No</Button>
+                                            <Button variant="danger" style={{ marginLeft: 12 }} onClick={this.openModal2}>Delete</Button>
+
+                                        </ButtonToolbar>
+
+                                    </Row>
+                                </Col>
+                            </Row>
+                        </Modal.Body>
+                    </Modal>}
                 </div>
 
                 <div>
